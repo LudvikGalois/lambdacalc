@@ -1,0 +1,9 @@
+nil ::= λfz.z
+cons ::= λxyfz.fx(yfz)
+true ::= λxy.x
+false ::= λxy.y
+not ::= λp.p #false #true
+B ::= λfgx.f(gx)
+map ::= λfx.x (λx. #cons (fx)) #nil
+
+#map #not (#cons #true (#cons #false (#cons #true #nil)))

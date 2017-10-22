@@ -1,0 +1,21 @@
+K ::= λxy.x
+I ::= λx.x
+zero ::= λsz.z
+succ ::= λnsz.s(nsz)
+one ::= #succ #zero
+two ::= #succ #one
+add ::= λmnsz.ms(nsz)
+mult ::= λmnsz. m(ns)z
+pair ::= λxyp.pxy
+fst ::= λp.p #K
+snd ::= λp.p (#K #I)
+Y ::= λf.(λx.f(xx))(λx.f(xx))
+Z ::= λf.(λx.f(λv.xxv))(λx.f(λv.xxv))
+zerop ::= λn.n (#K (#K #I)) #K
+pred ::= λn.#fst (n (λp. #pair (#snd p) (#succ (#snd p))) (#pair #zero #zero)) 
+sub ::= λmn.n #pred m
+le ::= λmn.#zerop (#sub m n)
+lt ::= λmn.#le (#succ m) n
+div ::= λmn.#zerop n #zero (#Y (λrmn.#lt mn #zero (#succ (r(#sub mn)n)))mn)
+
+#div 
